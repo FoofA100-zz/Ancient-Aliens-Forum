@@ -12,7 +12,6 @@ else
 end
 ​
 
-db.exec("DROP TABLE IF EXISTS likes CASCADE")
 db.exec("DROP TABLE IF EXISTS comments CASCADE")
 db.exec("DROP TABLE IF EXISTS posts CASCADE")
 db.exec("DROP TABLE IF EXISTS topics CASCADE")
@@ -54,12 +53,4 @@ db.exec("CREATE TABLE comments(
 )"
 )
 
-db.exec("CREATE TABLE likes(
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
-  topic_id INTEGER REFERENCES topics(id),
-  post_id INTEGER REFERENCES posts(id),
-  comment_id INTEGER REFERENCES comments(id),
-  count INTEGER
-)"
-)
+
