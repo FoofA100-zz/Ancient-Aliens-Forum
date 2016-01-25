@@ -88,7 +88,7 @@ class Server < Sinatra::Base
 	   post "/topics" do
         user_id = session['user_id'].to_i
         topic = params['topic']
-        @@db = PG.connect(dbname: "forum_project")
+        # @@db = PG.connect(dbname: "forum_project")
         new_topic = @@db.exec_params("INSERT INTO topics (user_id, topic) 
                                     VALUES ($1, $2) RETURNING id",[user_id,topic])   
         topic_submitted = true
