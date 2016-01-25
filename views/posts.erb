@@ -46,7 +46,7 @@
 <form class="new_post" action="/topics" method="post">
     
      <div class="input-row">
-        <label for="topic">Topic:<%="params['topic_id']" %> </label><br /> 
+        <label for="topic">Topic:<%= params[:id] %> </label><br /> 
         <input type="hidden" name="<%= "#post{['content']}"%>">
       </div>
         <div class="input-row">
@@ -59,7 +59,7 @@
            <textarea name="content"></textarea>
         </div>
             <% @posts.each do |post| %>  
-            <%= post['user_name'] %> <%= post['topic_id'] %> <      %= post['content']%> 
+            <%= post['user_name'] %> <%= post['topic_id'] %> <%= post['content']%> 
             <% end %>
           <div class="input-row">
              <input type="submit" value="submit content"/>

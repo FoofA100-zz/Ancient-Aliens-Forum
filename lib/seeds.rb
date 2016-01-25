@@ -5,13 +5,14 @@ if ENV["RACK_ENV"] == "production"
     dbname: ENV["POSTGRES_DB"],
     host: ENV["POSTGRES_HOST"],
     password: ENV["POSTGRES_PASS"],
-    user: ENV["POSTGRES_USER"]
+    user: ENV["POSTGRES_USER"] 
     )
 else
   db = PG.connect(dbname: "forum_project")
 end
-​
+   
 
+db.exec("DROP TABLE IF EXISTS likes CASCADE")
 db.exec("DROP TABLE IF EXISTS comments CASCADE")
 db.exec("DROP TABLE IF EXISTS posts CASCADE")
 db.exec("DROP TABLE IF EXISTS topics CASCADE")
@@ -32,7 +33,7 @@ db.exec("CREATE TABLE topics(
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   topic VARCHAR
-)"
+ )"
 )
 
 db.exec("CREATE TABLE posts(
@@ -40,8 +41,8 @@ db.exec("CREATE TABLE posts(
   user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topics(id),
   content VARCHAR(255)
-)"
-)
+ )"
+) 
 
 db.exec("CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
@@ -50,7 +51,15 @@ db.exec("CREATE TABLE comments(
   post_id INTEGER REFERENCES posts(id), 
   comment VARCHAR(255),
   count INTEGER 
-)"
+ )"
 )
 
-
+db.exec("CREATE TABLE likes(
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  topic_id INTEGER REFERENCES topics(id),
+  post_id INTEGER REFERENCES posts(id),
+  comment_id INTEGER REFERENCES comments(id),
+  count INTEGER
+ )"
+)
