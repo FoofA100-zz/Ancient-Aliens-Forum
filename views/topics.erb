@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="My forum project">
+    <meta name="author" content="Ruth Acosta">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Forum Project 2 bootstrap template-signup page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylestheets/jumbotron.css" rel="stylesheet">
+    <link href="/css/topics.css" rel="stylesheet">
+
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+
+<body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <h4 style= "color:white">Thanks for signing up! Create a topic or choose one from the drop down, then hit SUBMIT!</h4>
+        </div>
+       <div id="navbar" class="navbar-collapse collapse"></div>
+      </div>
+      </nav>
+
+
+
+      <form class="new_topic" action="/topics" method="post">
+        <div class="input-row">
+          <label for="topic">Create a Topic:</label><br />
+            <input type="text" name="topic"><br />
+               <input class="button-primary" type="submit" value="Submit"/>
+                  <select name="topics_id">
+                  <% @topics.each do |topic| %>
+                      <option value="<%= "#{topic['user_id']}" %>"><%= "#{topic['topic']}" %> </option>
+                  <%end%> 
+                  </select
+                 
+          </div>
+         </div>          
+       </form>
+</body>
+

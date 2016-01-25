@@ -1,0 +1,24 @@
+
+
+<form class="new_content" action="/comments" method="post">
+<div class="input-row">
+      <label for="comment">Enter a Comment:</label><br />
+      <input type="text" name="comment" /><br />
+      <input class="comment" type="submit" value="Sumbit"/>
+
+  <ul>
+ <% @comments.each do |comment| %>
+      <a href="/comments/<%= "#{comment['id']}" %>">
+   <li><%= comment ['user_name'] %> <%= comment['topic_id']%> <%=comment['post_id'] %> <%= comment['comment']%> <%= comment['count']%>  %></li></a>
+  <% end %>
+  </ul>
+</div>
+</form>
+ 
+
+
+
+      <div>   
+       <span class="likebtn-wrapper" data-white_label="true" data-identifier="Likes" data-popup_disabled="true"></span>
+         <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+      </div>

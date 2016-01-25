@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  <link rel="stylesheet" href="/stylesheets/skeleton.css">
+</head>
+
+
+
+
+<h4>Do you like talking about movies, books, or whether you think there is life on other planets? </h4>
+ <h4>OR how that dude's hair on Ancient Aliens just keeps growing...UP?</h4><h4>Well then this is the place for you!</h4> <h4>Sign up and in and let's get the topics of the day going!</h4>
+
+
+
+
+<form method="post">
+  <div class="row">
+    <div class="four columns">
+      <label for="NameInput">Your name</label>
+      <input class="u-full-width" name="user_name" type="text" placeholder="Your name here" id="user_name">
+    </div>
+    <div class="four columns">
+      <label for="EmailInput">Your email</label>
+      <input class="u-full-width" name="user_email" type="email" placeholder="email@mailbox.com" id="user_email">
+    </div>
+    <div class="four columns">
+      <label for="PasswordInput">Your password</label>
+      <input class="u-full-width" name="user_password" type="password" placeholder="password" id="user_password_digest">
+    </div>
+    
+  </div>
+  <input class="button-primary" type="submit" value="Sign up">
+  <input class="button-primary" type="submit" value="Sign in">
+</form> 
+
+
+</body>
+</html>
+
+
+
+<form class="topics" action="/topics" method="post">
+         <div class="input-row">
+           <label for="topics_id">Topic Title:</label>
+            <textarea name="topic"></textarea>
+               <input class="button-primary" type="submit" value="Submit"/>
+             
+              <select name="topics_id">
+                <% @topics.each do |topic| %>
+                    <option value="<%= "#{topic['user_id']}" %>"><%= "#{topic['topic']}" %></option>
+                <%end%>    
+                </select 
+                 
+                 <div class="input-row">
+                 <input type="submit content" value="submit" name="choose a topic"/>
+                 </div>
+          </div>          
+        </form>
+
+
