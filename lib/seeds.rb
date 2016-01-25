@@ -1,18 +1,17 @@
 require 'pg'
 
-
 if ENV["RACK_ENV"] == 'production'
-  db = PG.connect(
+  dd = PG.connect(
     dbname: ENV["POSTGRES_DB"],
     host: ENV["POSTGRES_HOST"],
     password: ENV["POSTGRES_PASS"],
     user: ENV["POSTGRES_USER"]
-  )
+    )
 ​
 else
-​
-db = PG.connect(dbname: "forum_project")
+  db = PG.connect(dbname:"forum_project")
 end
+​
 
 db.exec("DROP TABLE IF EXISTS likes CASCADE")
 db.exec("DROP TABLE IF EXISTS comments CASCADE")
