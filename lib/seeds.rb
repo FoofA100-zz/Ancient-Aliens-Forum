@@ -2,7 +2,7 @@ require 'pg'
 
 
 if ENV["RACK_ENV"] == 'production'
-  @@db = PG.connect(
+  db = PG.connect(
     dbname: ENV["POSTGRES_DB"],
     host: ENV["POSTGRES_HOST"],
     password: ENV["POSTGRES_PASS"],
@@ -11,17 +11,17 @@ if ENV["RACK_ENV"] == 'production'
 ​
 else
 ​
-@@db = PG.connect(dbname: "forum_project")
+db = PG.connect(dbname: "forum_project")
 end
 
-@@db.exec("DROP TABLE IF EXISTS likes CASCADE")
-@@db.exec("DROP TABLE IF EXISTS comments CASCADE")
-@@db.exec("DROP TABLE IF EXISTS posts CASCADE")
-@@db.exec("DROP TABLE IF EXISTS topics CASCADE")
-@@db.exec("DROP TABLE IF EXISTS users CASCADE")
+db.exec("DROP TABLE IF EXISTS likes CASCADE")
+db.exec("DROP TABLE IF EXISTS comments CASCADE")
+db.exec("DROP TABLE IF EXISTS posts CASCADE")
+db.exec("DROP TABLE IF EXISTS topics CASCADE")
+db.exec("DROP TABLE IF EXISTS users CASCADE")
 
 
-@@db.exec("CREATE TABLE users(
+db.exec("CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   user_name VARCHAR(50) UNIQUE NOT NULL,
   user_email VARCHAR NOT NULL,
@@ -31,14 +31,14 @@ end
 )
 
 
-@@db.exec("CREATE TABLE topics(
+db.exec("CREATE TABLE topics(
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   topic VARCHAR
 )"
 )
 
-@@db.exec("CREATE TABLE posts(
+db.exec("CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topics(id),
@@ -46,7 +46,7 @@ end
 )"
 )
 
-@@db.exec("CREATE TABLE comments(
+db.exec("CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topics(id),
@@ -56,7 +56,7 @@ end
 )"
 )
 
-@@db.exec("CREATE TABLE likes(
+db.exec("CREATE TABLE likes(
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topics(id),
