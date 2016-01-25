@@ -15,10 +15,10 @@ else
 end
 
 @@db.exec("DROP TABLE IF EXISTS likes CASCADE")
-@@db.exec("DROP TABLE IF EXISTS comments CASCADE)
-@@db.exec("DROP TABLE IF EXISTS posts CASCADE)
-@@db.exec("DROP TABLE IF EXISTS topics CASCADE)
-@@db.exec("DROP TABLE IF EXISTS users CASCADE)
+@@db.exec("DROP TABLE IF EXISTS comments CASCADE")
+@@db.exec("DROP TABLE IF EXISTS posts CASCADE")
+@@db.exec("DROP TABLE IF EXISTS topics CASCADE")
+@@db.exec("DROP TABLE IF EXISTS users CASCADE")
 
 
 @@db.exec("CREATE TABLE users(
