@@ -8,7 +8,18 @@ class Server < Sinatra::Base
 
 	 enable :sessions
 
-	 @@db = PG.connect(dbname: "forum_project")
+	 if ENV["RACK_ENV"] == 'production'
+  @@db = PG.connect(
+    dbname: ENV["POSTGRES_DB"],
+    host: ENV["POSTGRES_HOST"],
+    password: ENV["POSTGRES_PASS"],
+    user: ENV["POSTGRES_USER"]
+  )
+​
+else
+​
+@@db = PG.connect(dbname: "forum_project")
+end
 
       def current_user
         if session["user_id"]
