@@ -76,7 +76,7 @@ class Server < Sinatra::Base
 
       get "/topics" do 
         if session["user_id"]
-      	   @@db = PG.connect(dbname: "forum_project")
+      	   # @@db = PG.connect(dbname: "forum_project")
       	   @topics = @@db.exec("SELECT topic FROM topics").to_a
   	  	  erb :topics
         else
