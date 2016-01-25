@@ -1,15 +1,14 @@
 require 'pg'
 
-if ENV["RACK_ENV"] == 'production'
+if ENV["RACK_ENV"] == "production"
   dd = PG.connect(
     dbname: ENV["POSTGRES_DB"],
     host: ENV["POSTGRES_HOST"],
     password: ENV["POSTGRES_PASS"],
     user: ENV["POSTGRES_USER"]
     )
-​
 else
-  db = PG.connect(dbname:"forum_project")
+  db = PG.connect(dbname: "forum_project")
 end
 ​
 
