@@ -1,4 +1,4 @@
-requrie 'pg'
+require 'pg'
 
 
 if ENV["RACK_ENV"] == 'production'
